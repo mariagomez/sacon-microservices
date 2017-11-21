@@ -38,3 +38,15 @@ Look at the jacoco report to understand the parts of the code that need more cov
 
 Hint:
 Try creating a test for the method _borrow_ in the _CatalogController_
+
+## Exercise 2: re-organize monolith and create clear separation of packages
+The goal of this exercise is to end up with three distinct packages that express the different bounded contexts:
+
+```
+es.codemotion.madrid.library.borrow
+es.codemotion.madrid.library.catalog
+es.codemotion.madrid.library.rating
+```
+
+Hint:
+Use refactoring techniques like _composing methods_ and _moving features between objects_. Don't be afraid of _organizing data_.
