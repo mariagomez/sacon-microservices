@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Codemotion Library</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <section class="hero is-info is-medium">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-2">
+                    Welcome to the Codemotion Library!
+                </h1>
+                <h2 class="subtitle is-3">
+                    Catalog
+                </h2>
+            </div>
+        </div>
+    </section>
+    <br/><br/>
+    <div th:each="book : ${books}" class="container">
+        <section>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <figure class="image">
+                            <img th:src="@{/images/} + ${book.imagePath}" />
+                        </figure>
+                    </div>
+                </div>
+                <div class="tile is-8 is-vertical is-parent">
+                    <div class="tile is-child box notification">
+                        <p class="title is-2">
+                            <strong><span th:text="${book.name}" /></strong>
+                        </p>
+                    </div>
+                    <div class="tile is-child box">
+                        <p class="title is-5"><strong>Author</strong></p>
+                        <p th:text="${book.author}" />
+                    </div>
+                    <div class="tile is-child box">
+                        <p class="title is-5"><strong>Rating</strong></p>
+                        <p th:if="(${book.rating}>0)">
+                            <span class="icon" th:each="star:${#numbers.sequence(1,book.rating)}">
+                                <img class="image is-" th:src="@{images/star.jpg}" />
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <div th:if="${book.available}">
+                            <form action="#" th:action="@{/catalog/borrow}" th:object="${data}" method="post">
+                                <input type="hidden" th:field="*{id}" />
+                                <a class="button is-primary is-large">Borrow</a>
+                            </form>
+                        </div>
+                        <div th:unless="${book.available}">
+                            <span class="tag is-dark is-large">Not Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title is-5"><strong>Description</strong></p>
+                        <p th:text="${book.description}" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr />
+    </div>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                </p>
+                <p>
+                    <a class="icon" href="https://github.com/jgthms/bulma">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
