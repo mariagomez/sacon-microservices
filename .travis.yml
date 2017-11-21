@@ -2,6 +2,11 @@ language: java
 jdk:
   - oraclejdk8
 
+branches:
+  only:
+    - master
+    - 1_monolith_with_tests
+
 script:
   - cd library-monolith
   - ./gradlew check
