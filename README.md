@@ -57,3 +57,14 @@ Use refactoring techniques like _composing methods_ and _moving features between
 
 To check a possible solution for the exercise, execute the following command:
 `$ git checkout 2_monolith_with_packages`
+
+## Exercise 3: extract the first microservice
+Choose one of the existing package and create a new microservice for the rating functionality. Use the service template already included in this repo.
+
+Once the functionality works on its own, modify the code in the monolith to call the new service. Remember to test all the steps and remove any unused code after the changes.
+
+*Hint:*
+You should change the code in the _CatalogController_
+
+To check a possible solution for the exercise, execute the following command:
+`$ git checkout 3_monolith_and_microservice`
