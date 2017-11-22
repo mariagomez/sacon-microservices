@@ -36,8 +36,12 @@ To see the coverage
 ## Exercise 1: add more tests
 Look at the jacoco report to understand the parts of the code that need more coverage.
 
-Hint:
+*Hint:*
 Try creating a test for the method _borrow_ in the _CatalogController_
+
+To check a possible solution for the exercise, execute the following commands:
+`$ git fetch`
+`$ git checkout 1_monolith_with_tests`
 
 ## Exercise 2: re-organize monolith and create clear separation of packages
 The goal of this exercise is to end up with three distinct packages that express the different bounded contexts:
@@ -48,5 +52,8 @@ es.codemotion.madrid.library.catalog
 es.codemotion.madrid.library.rating
 ```
 
-Hint:
+*Hint:*
 Use refactoring techniques like _composing methods_ and _moving features between objects_. Don't be afraid of _organizing data_.
+
+To check a possible solution for the exercise, execute the following command:
+`$ git checkout 2_monolith_with_packages`
