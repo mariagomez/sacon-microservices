@@ -8,7 +8,7 @@ import es.codemotion.madrid.library.controllers.IndexController;
 import es.codemotion.madrid.library.catalog.Item;
 import es.codemotion.madrid.library.borrow.ItemAvailability;
 import es.codemotion.madrid.library.rating.ItemRating;
-import es.codemotion.madrid.library.rating.RatingService;
+import es.codemotion.madrid.library.rating.RatingServiceClient;
 import es.codemotion.madrid.library.controllers.CatalogController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
@@ -36,7 +37,9 @@ public class IndexPageTest {
     @MockBean
     private BorrowService borrowService;
     @MockBean
-    private RatingService ratingService;
+    private RatingServiceClient ratingServiceClient;
+    @MockBean
+    private RestTemplate restTemplate;
 
     @Test
     public void shouldShowCatalogWhenRequestingIndex() throws Exception {
@@ -45,7 +48,7 @@ public class IndexPageTest {
         ItemAvailability availability = mock(ItemAvailability.class);
         given(borrowService.getAvailability(anyLong())).willReturn(availability);
         ItemRating rating = mock(ItemRating.class);
-        given(ratingService.getRating(anyLong())).willReturn(rating);
+        given(ratingServiceClient.getRating(anyLong())).willReturn(rating);
 
         HtmlPage page = this.webClient.getPage("/");
         assertThat(page.getBody().getTextContent()).contains("Catalog");

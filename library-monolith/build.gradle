@@ -57,7 +57,8 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("com.h2database:h2")
-	compile "org.flywaydb:flyway-core:4.2.0"
+	compile("org.flywaydb:flyway-core:4.2.0")
+	compile("com.fasterxml.jackson.core:jackson-databind")
 	testCompile("junit:junit")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.seleniumhq.selenium:selenium-java:3.7.1')

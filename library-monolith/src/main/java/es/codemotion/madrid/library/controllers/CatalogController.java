@@ -6,14 +6,13 @@ import es.codemotion.madrid.library.catalog.Item;
 import es.codemotion.madrid.library.borrow.ItemAvailability;
 import es.codemotion.madrid.library.rating.ItemRating;
 import es.codemotion.madrid.library.models.BookWithAvailabilityAndRating;
-import es.codemotion.madrid.library.rating.RatingService;
+import es.codemotion.madrid.library.rating.RatingServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -28,7 +27,7 @@ public class CatalogController {
     private BorrowService borrowService;
 
     @Autowired
-    private RatingService ratingService;
+    private RatingServiceClient ratingServiceClient;
 
     @RequestMapping("/catalog")
     public String catalog(ModelMap model) {
@@ -42,7 +41,7 @@ public class CatalogController {
         List<BookWithAvailabilityAndRating> booksWithAvailability = StreamSupport.stream(books.spliterator(), false)
                 .map(book -> {
                     ItemAvailability availability = borrowService.getAvailability(book.getId());
-                    ItemRating rating = ratingService.getRating(book.getId());
+                    ItemRating rating = ratingServiceClient.getRating(book.getId());
                     return new BookWithAvailabilityAndRating(book.getId(), book.getName(), book.getAuthor(), book.getDescription(), rating.getRating(), book.getImagePath(), availability.isAvailable());
                 })
                 .collect(Collectors.toList());
