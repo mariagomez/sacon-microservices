@@ -7,6 +7,7 @@ branches:
     - master
     - 1_monolith_with_tests
     - 2_monolith_with_packages
+    - 3_monolith_and_microservice
 
 script:
   - cd library-monolith
