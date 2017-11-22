@@ -70,8 +70,7 @@ public class CatalogControllerTest {
 
     @Test
     public void shouldModifyTheAvailabilityOfTheBookFromAvailableToNot() throws Exception {
-        Item item = new Item(name, author, description, imagePath);
-        mockMvc.perform(post("/catalog/borrow", item.getId()))
+        mockMvc.perform(post("/catalog/borrow").param("bookId", "1"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/catalog"));
     }
