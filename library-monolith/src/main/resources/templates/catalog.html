@@ -61,9 +61,9 @@
                     </div>
                     <div>
                         <div th:if="${book.available}">
-                            <form action="#" th:action="@{/catalog/borrow}" th:object="${data}" method="post">
-                                <input type="hidden" th:field="*{id}" />
-                                <a class="button is-primary is-large">Borrow</a>
+                            <form th:action="@{/catalog/borrow}" th:object="${book}" method="post">
+                                <button type="submit" name="bookId"
+                                        th:value="${book.id}" th:text="Borrow" class="button is-primary is-large">Borrow</button>
                             </form>
                         </div>
                         <div th:unless="${book.available}">
