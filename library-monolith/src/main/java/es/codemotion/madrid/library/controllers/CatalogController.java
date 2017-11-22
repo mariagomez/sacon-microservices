@@ -6,15 +6,14 @@ import es.codemotion.madrid.library.catalog.Item;
 import es.codemotion.madrid.library.borrow.ItemAvailability;
 import es.codemotion.madrid.library.rating.ItemRating;
 import es.codemotion.madrid.library.models.BookWithAvailabilityAndRating;
-import es.codemotion.madrid.library.models.BorrowData;
 import es.codemotion.madrid.library.rating.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -36,7 +35,6 @@ public class CatalogController {
         List<Item> books = catalogService.getAllBooks();
         List<BookWithAvailabilityAndRating> booksWithAvailability = addAvailability(books);
         model.addAttribute("books", booksWithAvailability);
-        model.addAttribute("data", new BorrowData());
         return "catalog";
     }
 
@@ -51,9 +49,10 @@ public class CatalogController {
         return booksWithAvailability;
     }
 
-    @PostMapping("/catalog/borrow")
-    public String borrow(@ModelAttribute BorrowData data) {
-        borrowService.changeAvailability(data.getId());
+    @RequestMapping(value = "/catalog/borrow", params={"bookId"})
+    public String borrow(final HttpServletRequest request) {
+        String parameter = request.getParameter("bookId");
+        borrowService.changeAvailability(Integer.valueOf(parameter).longValue());
         return "redirect:/catalog";
     }
 }
