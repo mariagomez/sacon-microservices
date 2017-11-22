@@ -62,7 +62,7 @@ public class CatalogControllerTest {
     public void shouldModifyTheAvailabilityOfTheBookFromAvailableToNot() throws Exception {
         Item item = new Item(name, author, description, rating, available, imagePath);
         when(bookRepository.findOne(anyLong())).thenReturn(item);
-        mockMvc.perform(post("/catalog/borrow", item.getId()))
+        mockMvc.perform(post("/catalog/borrow").param("bookId", "1"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/catalog"));
     }
