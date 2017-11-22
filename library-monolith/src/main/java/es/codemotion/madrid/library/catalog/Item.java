@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library.dao;
+package es.codemotion.madrid.library.catalog;
 
 import javax.persistence.*;
 
@@ -13,19 +13,15 @@ public class Item {
     private String author;
     @Lob
     private String description;
-    private int rating;
-    private boolean available;
     private String imagePath;
 
     protected Item() {
     }
 
-    public Item(String name, String author, String description, int rating, boolean available, String imagePath) {
+    public Item(String name, String author, String description, String imagePath) {
         this.name = name;
         this.author = author;
         this.description = description;
-        this.rating = rating;
-        this.available = available;
         this.imagePath = imagePath;
     }
 
@@ -41,14 +37,6 @@ public class Item {
         return description;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
     public String getImagePath() {
         return imagePath;
     }
@@ -57,7 +45,7 @@ public class Item {
         return id;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setId(long id) {
+        this.id = id;
     }
 }

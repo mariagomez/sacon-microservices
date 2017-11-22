@@ -1,6 +1,5 @@
-package es.codemotion.madrid.library.repositories;
+package es.codemotion.madrid.library.catalog;
 
-import es.codemotion.madrid.library.dao.Item;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BookRepository extends CrudRepository<Item, Long> {
