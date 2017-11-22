@@ -38,3 +38,7 @@ Look at the jacoco report to understand the parts of the code that need more cov
 
 Hint:
 Try creating a test for the method _borrow_ in the _CatalogController_
+
+To check a possible solution for the exercise, execute the following commands:
+`$ git fetch`
+`$ git checkout 1_monolith_with_tests`
