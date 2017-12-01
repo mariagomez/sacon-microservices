@@ -40,4 +40,5 @@ public class CatalogController {
         bookRepository.save(book);
         return "redirect:/catalog";
     }
+    
 }
