@@ -22,7 +22,7 @@ To edit with IntelliJ:
 
 `$ ./gradlew idea`
 
-`$ open codemotion-library.ipr`
+`$ open ninja-library.ipr`
 
 To run tests:
 
