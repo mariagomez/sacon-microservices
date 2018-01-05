@@ -1,0 +1,27 @@
+pipeline {
+
+  stages {
+    stage('SDK - build and test') {
+        steps {
+            sh './gradlew check'
+        }
+    }
+
+    stage('SDK - package') {
+        steps {
+            sh './gradlew jar'
+        }
+    }
+  }
+
+  post {
+      success {
+        archive 'sdk/build/outputs/**/*.jar'
+        archive 'app/build/outputs/apk/**/*.apk'
+      }
+      always {
+        junit 'sdk/build/test-results/**/*.xml'
+      }
+  }
+
+}
