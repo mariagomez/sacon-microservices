@@ -1,28 +1,32 @@
 pipeline {
 
   agent any
-  
+
   stages {
     stage('SDK - build and test') {
         steps {
-            sh './gradlew check'
+            dir('library-monolith') {
+                sh './gradlew check'
+                step([$class: 'JacocoPublisher', execPattern:'build/jacoco/*.exec', classPattern: 'build/classes/main', sourcePattern: 'src/main/java'])
+            }
         }
     }
 
     stage('SDK - package') {
         steps {
-            sh './gradlew jar'
+            dir('library-monolith') {
+                sh './gradlew jar'
+            }
         }
     }
   }
 
   post {
       success {
-        archive 'sdk/build/outputs/**/*.jar'
-        archive 'app/build/outputs/apk/**/*.apk'
+        archive 'library-monolith/build/**/library-*.jar'
       }
       always {
-        junit 'sdk/build/test-results/**/*.xml'
+        junit 'library-monolith/build/test-results/**/*.xml'
       }
   }
 
