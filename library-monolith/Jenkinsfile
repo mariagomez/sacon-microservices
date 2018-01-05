@@ -1,5 +1,7 @@
 pipeline {
 
+  agent any
+  
   stages {
     stage('SDK - build and test') {
         steps {
