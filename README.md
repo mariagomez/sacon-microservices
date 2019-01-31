@@ -1,4 +1,4 @@
-# SACON NY Workshop
+# SACON NY 2019 Workshop
 
 ## Requirements
 * Github account
