@@ -1,4 +1,4 @@
-# Codemotion Workshop
+# SACON NY 2019 Workshop
 
 ## Requirements
 * Github account
@@ -22,7 +22,7 @@ To edit with IntelliJ:
 
 `$ ./gradlew idea`
 
-`$ open ninja-library.ipr`
+`$ open library-library.ipr`
 
 To run tests:
 
@@ -47,9 +47,9 @@ To check a possible solution for the exercise, execute the following commands:
 The goal of this exercise is to end up with three distinct packages that express the different bounded contexts:
 
 ```
-es.codemotion.madrid.library.borrow
-es.codemotion.madrid.library.catalog
-es.codemotion.madrid.library.rating
+com.oreilly.sacon.library.borrow
+com.oreilly.sacon.library.catalog
+com.oreilly.sacon.library.rating
 ```
 
 *Hint:*

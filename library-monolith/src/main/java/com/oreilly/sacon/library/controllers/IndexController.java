@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library.controllers;
+package com.oreilly.sacon.library.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,8 @@
-package es.codemotion.madrid.library.controllers;
+package com.oreilly.sacon.library.controllers;
 
-import es.codemotion.madrid.library.dao.Item;
-import es.codemotion.madrid.library.repositories.BookRepository;
-import es.codemotion.madrid.library.models.Book;
+import com.oreilly.sacon.library.dao.Item;
+import com.oreilly.sacon.library.models.Book;
+import com.oreilly.sacon.library.repositories.BookRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

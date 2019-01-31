@@ -1,8 +1,8 @@
-package es.codemotion.madrid.library.controllers;
+package com.oreilly.sacon.library.controllers;
 
-import es.codemotion.madrid.library.dao.Item;
-import es.codemotion.madrid.library.models.Book;
-import es.codemotion.madrid.library.repositories.BookRepository;
+import com.oreilly.sacon.library.dao.Item;
+import com.oreilly.sacon.library.models.Book;
+import com.oreilly.sacon.library.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,7 +35,7 @@ public class CatalogController {
     @RequestMapping(value = "/catalog/borrow", params={"bookId"})
     public String borrow(final HttpServletRequest request) {
         String parameter = request.getParameter("bookId");
-        Item book = bookRepository.findOne(Integer.valueOf(parameter).longValue());
+        Item book = bookRepository.findOne(Long.valueOf(parameter));
         book.setAvailable(false);
         bookRepository.save(book);
         return "redirect:/catalog";

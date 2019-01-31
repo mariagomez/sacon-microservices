@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library.dao;
+package com.oreilly.sacon.library.dao;
 
 import javax.persistence.*;
 
