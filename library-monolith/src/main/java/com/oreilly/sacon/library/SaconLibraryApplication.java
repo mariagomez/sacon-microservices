@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CodemotionLibraryApplication {
+public class SaconLibraryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CodemotionLibraryApplication.class, args);
+		SpringApplication.run(SaconLibraryApplication.class, args);
 	}
 }
