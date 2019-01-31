@@ -1,4 +1,4 @@
-# Codemotion Workshop
+# SACON NY Workshop
 
 ## Requirements
 * Github account
