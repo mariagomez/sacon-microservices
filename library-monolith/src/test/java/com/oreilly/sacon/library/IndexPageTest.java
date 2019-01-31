@@ -1,11 +1,11 @@
-package es.codemotion.madrid.library;
+package com.oreilly.sacon.library;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import es.codemotion.madrid.library.controllers.IndexController;
-import es.codemotion.madrid.library.dao.Item;
-import es.codemotion.madrid.library.repositories.BookRepository;
-import es.codemotion.madrid.library.controllers.CatalogController;
+import com.oreilly.sacon.library.dao.Item;
+import com.oreilly.sacon.library.controllers.IndexController;
+import com.oreilly.sacon.library.repositories.BookRepository;
+import com.oreilly.sacon.library.controllers.CatalogController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library;
+package com.oreilly.sacon.library;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

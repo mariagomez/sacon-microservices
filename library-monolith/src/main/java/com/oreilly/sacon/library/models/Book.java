@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library.models;
+package com.oreilly.sacon.library.models;
 
 public class Book {
     private Long id;
