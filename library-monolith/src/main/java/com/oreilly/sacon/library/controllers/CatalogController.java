@@ -35,7 +35,7 @@ public class CatalogController {
     @RequestMapping(value = "/catalog/borrow", params={"bookId"})
     public String borrow(final HttpServletRequest request) {
         String parameter = request.getParameter("bookId");
-        Item book = bookRepository.findOne(Integer.valueOf(parameter).longValue());
+        Item book = bookRepository.findOne(Long.valueOf(parameter));
         book.setAvailable(false);
         bookRepository.save(book);
         return "redirect:/catalog";
