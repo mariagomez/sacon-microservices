@@ -22,7 +22,7 @@ To edit with IntelliJ:
 
 `$ ./gradlew idea`
 
-`$ open library-library.ipr`
+`$ open library-monolith.ipr`
 
 To run tests:
 
