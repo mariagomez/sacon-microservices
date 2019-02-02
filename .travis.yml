@@ -2,9 +2,12 @@ language: java
 jdk:
   - oraclejdk8
 
-script:
-  - cd library-monolith
-  - ./gradlew check
+jobs:
+  include:
+    - stage: test
+      script:
+        - cd library-monolith
+        - ./gradlew check
 
 before_cache:
   - rm -f  $HOME/library-monolith/.gradle/caches/modules-2/modules-2.lock
