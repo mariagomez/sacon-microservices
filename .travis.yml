@@ -9,17 +9,29 @@ branches:
     - 2_monolith_with_packages
     - 3_monolith_and_microservice
 
-script:
-  - cd library-monolith
-  - ./gradlew check
+jobs:
+  include:
+    - stage: library monolith
+      script:
+        - cd library-monolith
+        - ./gradlew check
+    - stage: rating service
+      script:
+        - cd rating-service
+        - ./gradlew check
 
 before_cache:
   - rm -f  $HOME/library-monolith/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/library-monolith/.gradle/caches/*/plugin-resolution/
+  - rm -f  $HOME/rating-service/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/rating-service/.gradle/caches/*/plugin-resolution/
+
 cache:
   directories:
     - $HOME/library-monolith/.gradle/caches/
     - $HOME/library-monolith/.gradle/wrapper/
+    - $HOME/rating-service/.gradle/caches/
+    - $HOME/rating-service/.gradle/wrapper/
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
