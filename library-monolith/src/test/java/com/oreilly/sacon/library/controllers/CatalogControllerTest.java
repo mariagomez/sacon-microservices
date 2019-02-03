@@ -16,9 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.samePropertyValuesAs;
+import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -60,9 +61,10 @@ public class CatalogControllerTest {
 
     @Test
     public void shouldModifyTheAvailabilityOfTheBookFromAvailableToNot() throws Exception {
-        Item item = new Item(name, author, description, rating, available, imagePath);
+        Item item = mock(Item.class);
         when(bookRepository.findOne(anyLong())).thenReturn(item);
-        mockMvc.perform(post("/catalog/borrow").param("bookId", "1"))
+        String aId = "1";
+        mockMvc.perform(post("/catalog/borrow").param("bookId", aId))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/catalog"));
     }
