@@ -132,13 +132,12 @@ public class AvailabilityTest {
    ````
  - Refactor logic in the method `borrow` to use the new class
    ````
-  @RequestMapping(value = "/catalog/borrow", params={"bookId"})
-  public String borrow(final HttpServletRequest request) {
+   @RequestMapping(value = "/catalog/borrow", params={"bookId"})
+   public String borrow(final HttpServletRequest request) {
       String parameter = request.getParameter("bookId");
       availability.borrow(Long.valueOf(parameter));
       return "redirect:/catalog";
-  }
-
+   }
    ````
  - Run the tests in `CatalogControllerTest`. One of them is now failing as the bean `Availability` is not being defined. To fix them, inject the bean as a mock and refactor the failing test:
 
