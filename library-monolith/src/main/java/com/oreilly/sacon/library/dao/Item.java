@@ -29,6 +29,16 @@ public class Item {
         this.imagePath = imagePath;
     }
 
+    public Item(Long id, String name, String author, String description, int rating, boolean available, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.rating = rating;
+        this.available = available;
+        this.imagePath = imagePath;
+    }
+
     public String getAuthor() {
         return author;
     }
