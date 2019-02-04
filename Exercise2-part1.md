@@ -1,6 +1,6 @@
 # SACON NY 2019 Workshop
 
-## Exercise 2 step-by-step solution
+## Exercise 2 Part 1: step-by-step solution
 
 ### Catalog domain
 - Create a new method called `getAllBooks` in `CatalogController` and move the logic from the method `catalog`

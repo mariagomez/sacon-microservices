@@ -1,6 +1,6 @@
 # SACON NY 2019 Workshop
 
-## Exercise 3 step-by-step solution
+## Exercise 2 Part 2: step-by-step solution
 
 ### Availability domain
 - Create a new method called `borrowBook` in `CatalogController` and move the logic from the method `borrow`
