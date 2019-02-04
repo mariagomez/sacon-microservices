@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.availability;
+package com.oreilly.sacon.library.library.availability;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,12 +28,11 @@ public class AvailabilityClientTest {
     @Value("${availability.url}")
     private String availabilityUrl;
 
-
     @Before
     public void setUp() {
         initMocks(this);
-        when(restTemplate.getForObject(availabilityUrl + "1", Book.class)).thenReturn(new Book(true));
-        when(restTemplate.getForObject(availabilityUrl + "2", Book.class)).thenReturn(new Book(false));
+        when(restTemplate.getForObject(availabilityUrl + "availability/1", Book.class)).thenReturn(new Book(true));
+        when(restTemplate.getForObject(availabilityUrl + "availability/2", Book.class)).thenReturn(new Book(false));
     }
 
     @Test

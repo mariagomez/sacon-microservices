@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.availability;
+package com.oreilly.sacon.library.library.availability;
 
 import org.springframework.data.repository.CrudRepository;
 

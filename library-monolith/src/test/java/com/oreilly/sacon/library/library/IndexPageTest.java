@@ -1,14 +1,14 @@
-package com.oreilly.sacon.library;
+package com.oreilly.sacon.library.library;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.oreilly.sacon.library.availability.Availability;
-import com.oreilly.sacon.library.catalog.CatalogService;
-import com.oreilly.sacon.library.catalog.Item;
-import com.oreilly.sacon.library.controllers.CatalogController;
-import com.oreilly.sacon.library.controllers.IndexController;
-import com.oreilly.sacon.library.rating.ItemRating;
-import com.oreilly.sacon.library.rating.RatingService;
+import com.oreilly.sacon.library.library.availability.AvailabilityClient;
+import com.oreilly.sacon.library.library.catalog.CatalogService;
+import com.oreilly.sacon.library.library.catalog.Item;
+import com.oreilly.sacon.library.library.controllers.CatalogController;
+import com.oreilly.sacon.library.library.controllers.IndexController;
+import com.oreilly.sacon.library.library.rating.ItemRating;
+import com.oreilly.sacon.library.library.rating.RatingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class IndexPageTest {
     @MockBean
     private CatalogService catalogService;
     @MockBean
-    private Availability availability;
+    private AvailabilityClient availabilityClient;
     @MockBean
     private RatingService ratingService;
 
@@ -41,7 +41,7 @@ public class IndexPageTest {
     public void shouldShowCatalogWhenRequestingIndex() throws Exception {
         Item book = mock(Item.class);
         given(catalogService.getAllBooks()).willReturn(Arrays.asList(book));
-        given(this.availability.inStock(anyLong())).willReturn(true);
+        given(this.availabilityClient.inStock(anyLong())).willReturn(true);
         ItemRating rating = mock(ItemRating.class);
         given(ratingService.getRating(anyLong())).willReturn(rating);
 

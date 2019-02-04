@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.controllers;
+package com.oreilly.sacon.library.library.controllers;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

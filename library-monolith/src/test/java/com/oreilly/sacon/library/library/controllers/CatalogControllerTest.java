@@ -1,11 +1,11 @@
-package com.oreilly.sacon.library.controllers;
+package com.oreilly.sacon.library.library.controllers;
 
-import com.oreilly.sacon.library.availability.AvailabilityClient;
-import com.oreilly.sacon.library.catalog.CatalogService;
-import com.oreilly.sacon.library.catalog.Item;
-import com.oreilly.sacon.library.models.BookWithAvailabilityAndRating;
-import com.oreilly.sacon.library.rating.ItemRating;
-import com.oreilly.sacon.library.rating.RatingService;
+import com.oreilly.sacon.library.library.availability.AvailabilityClient;
+import com.oreilly.sacon.library.library.catalog.CatalogService;
+import com.oreilly.sacon.library.library.catalog.Item;
+import com.oreilly.sacon.library.library.models.BookWithAvailabilityAndRating;
+import com.oreilly.sacon.library.library.rating.ItemRating;
+import com.oreilly.sacon.library.library.rating.RatingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

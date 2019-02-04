@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.catalog;
+package com.oreilly.sacon.library.library.catalog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

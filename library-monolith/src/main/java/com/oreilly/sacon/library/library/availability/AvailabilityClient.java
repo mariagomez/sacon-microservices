@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.availability;
+package com.oreilly.sacon.library.library.availability;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

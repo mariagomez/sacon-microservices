@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.rating;
+package com.oreilly.sacon.library.library.rating;
 
 import org.junit.Before;
 import org.junit.Test;

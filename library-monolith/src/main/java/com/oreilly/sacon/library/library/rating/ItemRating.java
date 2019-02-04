@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.rating;
+package com.oreilly.sacon.library.library.rating;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

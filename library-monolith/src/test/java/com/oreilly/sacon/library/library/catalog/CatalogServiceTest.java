@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.catalog;
+package com.oreilly.sacon.library.library.catalog;
 
 import org.junit.Before;
 import org.junit.Test;

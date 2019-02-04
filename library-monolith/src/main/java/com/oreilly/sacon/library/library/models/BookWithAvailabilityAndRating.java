@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.models;
+package com.oreilly.sacon.library.library.models;
 
 public class BookWithAvailabilityAndRating {
     private Long id;
