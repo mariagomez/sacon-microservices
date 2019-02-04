@@ -2,13 +2,13 @@ package com.oreilly.sacon.library.controllers;
 
 public class BookAvailability {
 
-    private boolean inStock;
+    private boolean available;
 
-    public BookAvailability(boolean inStock) {
-        this.inStock = inStock;
+    public BookAvailability(boolean available) {
+        this.available = available;
     }
 
-    public boolean isInStock() {
-        return inStock;
+    public boolean isAvailable() {
+        return available;
     }
 }

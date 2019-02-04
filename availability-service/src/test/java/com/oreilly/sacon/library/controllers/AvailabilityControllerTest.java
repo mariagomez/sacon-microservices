@@ -34,7 +34,7 @@ public class AvailabilityControllerTest {
         when(availability.inStock(anyLong())).thenReturn(true);
         mockMvc.perform(MockMvcRequestBuilders.get("/availability/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'inStock':" + expectedRating + "}"));
+                .andExpect(content().json("{'available':" + expectedRating + "}"));
     }
 
     @Test
