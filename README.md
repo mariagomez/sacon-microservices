@@ -1,4 +1,4 @@
-# Codemotion Workshop
+# SACON NY 2019 Workshop
 
 ## Requirements
 * Github account
@@ -36,18 +36,22 @@ To see the coverage
 ## Exercise 1: add more tests
 Look at the jacoco report to understand the parts of the code that need more coverage.
 
-*Hint:*
+Hint:
 Try creating a test for the method _borrow_ in the _CatalogController_
 
-To check a possible solution for the exercise, execute the following commands:
-`$ git fetch`
-`$ git checkout 1_monolith_with_tests`
+You can follow a possible solution in [Exercise1](Exercise1.md)
 
-## Exercise 2: re-organize monolith and create clear separation of packages
-The goal of this exercise is to end up with three distinct packages that express the different bounded contexts:
+or you could checkout the branch:
+````
+$ git fetch
+$ git checkout 1_monolith_with_tests
+````
+
+## Exercises 2 & 3: re-organize monolith and create clear separation of packages
+The goal of these exercises is to end up with three distinct packages that express the different bounded contexts:
 
 ```
-com.oreilly.sacon.library.borrow
+com.oreilly.sacon.library.availability
 com.oreilly.sacon.library.catalog
 com.oreilly.sacon.library.rating
 ```
@@ -55,11 +59,13 @@ com.oreilly.sacon.library.rating
 *Hint:*
 Use refactoring techniques like _composing methods_ and _moving features between objects_. Don't be afraid of _organizing data_.
 
-To check a possible solution for the exercise, execute the following command:
+You can follow a possible solution in [Exercise2-part1](Exercise2-part1.md) and [Exercise2-part2](Exercise2-part2.md)
+
+or you could checkout the branch:
 `$ git checkout 2_monolith_with_packages`
 
-## Exercise 3: extract the first microservice
-Choose one of the existing package and create a new microservice for the rating functionality. Use the service template already included in this repo.
+## Exercise 4: extract the first microservice
+Choose one of the existing package and create a new microservice for the availability functionality. Use the service template already included in this repo.
 
 Once the functionality works on its own, modify the code in the monolith to call the new service. Remember to test all the steps and remove any unused code after the changes.
 

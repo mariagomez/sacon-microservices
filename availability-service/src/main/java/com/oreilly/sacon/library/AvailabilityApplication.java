@@ -1,12 +1,12 @@
-package es.codemotion.madrid.library;
+package com.oreilly.sacon.library;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RatingApplication {
+public class AvailabilityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RatingApplication.class, args);
+		SpringApplication.run(AvailabilityApplication.class, args);
 	}
 }

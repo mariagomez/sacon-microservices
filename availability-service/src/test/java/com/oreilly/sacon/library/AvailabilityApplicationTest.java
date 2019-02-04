@@ -1,4 +1,4 @@
-package es.codemotion.madrid.library;
+package com.oreilly.sacon.library;
 
 
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RatingApplicationTest {
+public class AvailabilityApplicationTest {
 
     @Test
     public void contextLoads() {

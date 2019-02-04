@@ -15,23 +15,23 @@ jobs:
       script:
         - cd library-monolith
         - ./gradlew check
-    - stage: rating service
+    - stage: availability service
       script:
-        - cd rating-service
+        - cd availability-service
         - ./gradlew check
 
 before_cache:
   - rm -f  $HOME/library-monolith/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/library-monolith/.gradle/caches/*/plugin-resolution/
-  - rm -f  $HOME/rating-service/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/rating-service/.gradle/caches/*/plugin-resolution/
+  - rm -f  $HOME/availability-service/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/availability-service/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
     - $HOME/library-monolith/.gradle/caches/
     - $HOME/library-monolith/.gradle/wrapper/
-    - $HOME/rating-service/.gradle/caches/
-    - $HOME/rating-service/.gradle/wrapper/
+    - $HOME/availability-service/.gradle/caches/
+    - $HOME/availability-service/.gradle/wrapper/
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
