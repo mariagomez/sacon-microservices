@@ -47,7 +47,7 @@ $ git fetch
 $ git checkout 1_monolith_with_tests
 ````
 
-## Exercises 2 & 3: re-organize monolith and create clear separation of packages
+## Exercise 2: re-organize monolith and create clear separation of packages
 The goal of these exercises is to end up with three distinct packages that express the different bounded contexts:
 
 ```
