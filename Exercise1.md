@@ -10,6 +10,19 @@
 - Add this new test:
 
 ````
+package com.oreilly.sacon.library.controllers;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = IndexController.class)
 public class IndexControllerTest {
@@ -27,13 +40,43 @@ public class IndexControllerTest {
 ````
 
 - Run all the test in the command line: `$ ./gradlew test`
-- [Optional] Commit the changes in the repository
+- If all the tests are passing, commit your changes:
+````
+$ git add .
+$ git commit -m "Add tests to IndexController"
+````
 
 ### Add tests to CatalogController
 - Create a class under the package `com.oreilly.sacon.library.controllers` called `CatalogControllerTest`
 - Add these new test:
 
 ````
+package com.oreilly.sacon.library.controllers;
+
+import com.oreilly.sacon.library.dao.Item;
+import com.oreilly.sacon.library.models.Book;
+import com.oreilly.sacon.library.repositories.BookRepository;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = CatalogController.class)
 public class CatalogControllerTest {
@@ -70,21 +113,29 @@ public class CatalogControllerTest {
 
     @Test
     public void shouldModifyTheAvailabilityOfTheBookFromAvailableToNot() throws Exception {
-        Item item = new Item(name, author, description, rating, available, imagePath);
-        when(bookRepository.findOne(anyLong())).thenReturn(item);
-        mockMvc.perform(post("/catalog/borrow", item.getId()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/catalog"));
+      Item item = mock(Item.class);
+      when(bookRepository.findOne(anyLong())).thenReturn(item);
+      String aId = "1";
+      mockMvc.perform(post("/catalog/borrow").param("bookId", aId))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/catalog"));
     }
 }
 ````
 - Run all the test in the command line: `$ ./gradlew test`
-- [Optional] Commit the changes in the repository
+- If all the tests are passing, commit your changes:
+````
+$ git add .
+$ git commit -m "Add tests to CatalogController"
+````
 
-### Run tests as part of the Continuous Integration pipeline with TravisCI & check code coverage with Codecov
+### [Optional] Run tests as part of the Continuous Integration pipeline with TravisCI & check code coverage with Codecov
 - Go to https://travis-ci.org, allow Travis to access your public Github repos.
 - Go to _Settings_, find the forked repository and activate it so Travis can track it
 - Go to https://codecov.io and allow Codecov to access your public Github repos
-- Added the forked repository
+- Added your forked repository
 
 - Push the changes to the remote repo and wait for Travis to run the jobs and Codecov to create the report
+````
+$ git push
+````
