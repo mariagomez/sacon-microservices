@@ -47,7 +47,7 @@ $ git fetch
 $ git checkout 1_monolith_with_tests
 ````
 
-## Exercises 2 & 3: re-organize monolith and create clear separation of packages
+## Exercise 2: re-organize monolith and create clear separation of packages
 The goal of these exercises is to end up with three distinct packages that express the different bounded contexts:
 
 ```
@@ -64,7 +64,7 @@ You can follow a possible solution in [Exercise2-part1](Exercise2-part1.md) and 
 or you could checkout the branch:
 `$ git checkout 2_monolith_with_packages`
 
-## Exercise 4: extract the first microservice
+## Exercise 3: extract the first microservice
 Choose one of the existing package and create a new microservice for the availability functionality. Use the service template already included in this repo.
 
 Once the functionality works on its own, modify the code in the monolith to call the new service. Remember to test all the steps and remove any unused code after the changes.
