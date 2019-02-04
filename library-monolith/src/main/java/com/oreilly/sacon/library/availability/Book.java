@@ -1,4 +1,4 @@
-package com.oreilly.sacon.library.borrow;
+package com.oreilly.sacon.library.availability;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ItemAvailability {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,23 +14,23 @@ public class ItemAvailability {
 
     private boolean available;
 
-    protected ItemAvailability() {
+    protected Book() {
     }
 
-    public ItemAvailability(boolean available) {
+    public Book(boolean available) {
         this.available = available;
     }
 
-    public Long getId() {
-        return id;
+    public boolean borrow() {
+        if (available) {
+            available = false;
+            return true;
+        }
+        return false;
     }
 
-    public boolean isAvailable() {
+    public boolean inStock() {
         return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
     }
 
 }

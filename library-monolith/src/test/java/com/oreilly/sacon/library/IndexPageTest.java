@@ -2,8 +2,7 @@ package com.oreilly.sacon.library;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.oreilly.sacon.library.borrow.BorrowService;
-import com.oreilly.sacon.library.borrow.ItemAvailability;
+import com.oreilly.sacon.library.availability.Availability;
 import com.oreilly.sacon.library.catalog.CatalogService;
 import com.oreilly.sacon.library.catalog.Item;
 import com.oreilly.sacon.library.controllers.CatalogController;
@@ -34,7 +33,7 @@ public class IndexPageTest {
     @MockBean
     private CatalogService catalogService;
     @MockBean
-    private BorrowService borrowService;
+    private Availability availability;
     @MockBean
     private RatingService ratingService;
 
@@ -42,8 +41,7 @@ public class IndexPageTest {
     public void shouldShowCatalogWhenRequestingIndex() throws Exception {
         Item book = mock(Item.class);
         given(catalogService.getAllBooks()).willReturn(Arrays.asList(book));
-        ItemAvailability availability = mock(ItemAvailability.class);
-        given(borrowService.getAvailability(anyLong())).willReturn(availability);
+        given(this.availability.inStock(anyLong())).willReturn(true);
         ItemRating rating = mock(ItemRating.class);
         given(ratingService.getRating(anyLong())).willReturn(rating);
 

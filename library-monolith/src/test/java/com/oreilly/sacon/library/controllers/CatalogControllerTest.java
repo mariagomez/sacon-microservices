@@ -1,7 +1,6 @@
 package com.oreilly.sacon.library.controllers;
 
-import com.oreilly.sacon.library.borrow.BorrowService;
-import com.oreilly.sacon.library.borrow.ItemAvailability;
+import com.oreilly.sacon.library.availability.Availability;
 import com.oreilly.sacon.library.catalog.CatalogService;
 import com.oreilly.sacon.library.catalog.Item;
 import com.oreilly.sacon.library.models.BookWithAvailabilityAndRating;
@@ -37,7 +36,7 @@ public class CatalogControllerTest {
     @MockBean
     private CatalogService catalogService;
     @MockBean
-    private BorrowService borrowService;
+    private Availability availability;
     @MockBean
     private RatingService ratingService;
     private final String name = "Lorem Ipsum";
@@ -54,7 +53,7 @@ public class CatalogControllerTest {
         BookWithAvailabilityAndRating bookWithAvailabilityAndRating = new BookWithAvailabilityAndRating(item.getId(), name, author, description, rating, imagePath, available);
         List<Item> books = Arrays.asList(item);
         when(catalogService.getAllBooks()).thenReturn(books);
-        when(borrowService.getAvailability(1L)).thenReturn(new ItemAvailability(available));
+        when(availability.inStock(1L)).thenReturn(available);
         when(ratingService.getRating(1L)).thenReturn(new ItemRating(rating));
 
         MvcResult mvcResult = mockMvc.perform(get("/catalog"))
