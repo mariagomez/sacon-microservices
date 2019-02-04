@@ -1,12 +1,11 @@
 package com.oreilly.sacon.library.controllers;
 
+import com.oreilly.sacon.library.availability.AvailabilityClient;
 import com.oreilly.sacon.library.catalog.CatalogService;
-import com.oreilly.sacon.library.borrow.BorrowService;
 import com.oreilly.sacon.library.catalog.Item;
-import com.oreilly.sacon.library.borrow.ItemAvailability;
-import com.oreilly.sacon.library.rating.ItemRating;
 import com.oreilly.sacon.library.models.BookWithAvailabilityAndRating;
-import com.oreilly.sacon.library.rating.RatingServiceClient;
+import com.oreilly.sacon.library.rating.ItemRating;
+import com.oreilly.sacon.library.rating.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,10 +23,10 @@ public class CatalogController {
     private CatalogService catalogService;
 
     @Autowired
-    private BorrowService borrowService;
+    private AvailabilityClient availabilityClient;
 
     @Autowired
-    private RatingServiceClient ratingServiceClient;
+    private RatingService ratingService;
 
     @RequestMapping("/catalog")
     public String catalog(ModelMap model) {
@@ -40,9 +39,15 @@ public class CatalogController {
     private List<BookWithAvailabilityAndRating> addAvailability(List<Item> books) {
         List<BookWithAvailabilityAndRating> booksWithAvailability = StreamSupport.stream(books.spliterator(), false)
                 .map(book -> {
-                    ItemAvailability availability = borrowService.getAvailability(book.getId());
-                    ItemRating rating = ratingServiceClient.getRating(book.getId());
-                    return new BookWithAvailabilityAndRating(book.getId(), book.getName(), book.getAuthor(), book.getDescription(), rating.getRating(), book.getImagePath(), availability.isAvailable());
+                    ItemRating rating = ratingService.getRating(book.getId());
+                    return new BookWithAvailabilityAndRating(
+                            book.getId(),
+                            book.getName(),
+                            book.getAuthor(),
+                            book.getDescription(),
+                            rating.getRating(),
+                            book.getImagePath(),
+                            availabilityClient.inStock(book.getId()));
                 })
                 .collect(Collectors.toList());
         return booksWithAvailability;
@@ -51,7 +56,7 @@ public class CatalogController {
     @RequestMapping(value = "/catalog/borrow", params={"bookId"})
     public String borrow(final HttpServletRequest request) {
         String parameter = request.getParameter("bookId");
-        borrowService.changeAvailability(Integer.valueOf(parameter).longValue());
+        availabilityClient.borrow(Integer.valueOf(parameter).longValue());
         return "redirect:/catalog";
     }
 }

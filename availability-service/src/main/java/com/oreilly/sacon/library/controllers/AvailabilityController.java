@@ -5,10 +5,7 @@ import com.oreilly.sacon.library.availability.Availability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AvailabilityController {
@@ -22,8 +19,8 @@ public class AvailabilityController {
         return new BookAvailability(available);
     }
 
-    @PutMapping(path = "/borrow/{id}")
-    public ResponseEntity borrow(@PathVariable long id) {
+    @PutMapping(path = "/borrow")
+    public ResponseEntity borrow(@RequestBody long id) {
         availability.borrow(id);
         return new ResponseEntity(HttpStatus.OK);
     }
