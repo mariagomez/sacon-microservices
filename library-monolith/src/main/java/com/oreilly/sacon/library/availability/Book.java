@@ -32,5 +32,9 @@ public class Book {
     public boolean inStock() {
         return available;
     }
+    
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 
 }
